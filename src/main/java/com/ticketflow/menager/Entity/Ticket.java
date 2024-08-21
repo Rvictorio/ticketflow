@@ -1,6 +1,7 @@
 package com.ticketflow.menager.Entity;
 
-import com.ticketflow.menager.Entity.Status;
+import com.ticketflow.menager.enums.Priority;
+import com.ticketflow.menager.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.apache.catalina.User;
@@ -25,9 +26,11 @@ public class Ticket {
 
     private String description;
 
-    private Status status;  // Ex: Open, Closed
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
-    private String priority; // Ex: Low, Medium, High
+    @Enumerated(EnumType.STRING)
+    private Priority priority;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -69,12 +72,12 @@ public class Ticket {
         this.status = Status.valueOf(status);
     }
 
-    public String getPriority() {
+    public Priority getPriority() {
         return priority;
     }
 
     public void setPriority(String priority) {
-        this.priority = priority;
+        this.priority = Priority.valueOf(priority);
     }
 
     public User getCreator() {
