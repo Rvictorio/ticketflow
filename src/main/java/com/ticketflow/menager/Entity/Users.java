@@ -3,7 +3,6 @@ package com.ticketflow.menager.Entity;
 import com.ticketflow.menager.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "users")

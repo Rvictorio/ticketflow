@@ -4,9 +4,6 @@ import com.ticketflow.menager.enums.Priority;
 import com.ticketflow.menager.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.User;
-import org.springframework.data.annotation.Id;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -34,7 +31,7 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User creator;
+    private Users creator;
 
     private LocalDateTime createdAt;
 
@@ -80,11 +77,11 @@ public class Ticket {
         this.priority = Priority.valueOf(priority);
     }
 
-    public User getCreator() {
+    public Users getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(Users creator) {
         this.creator = creator;
     }
 

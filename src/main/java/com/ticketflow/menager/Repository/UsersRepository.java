@@ -4,6 +4,9 @@ import com.ticketflow.menager.Entity.Users; // Certifique-se de que esta é a im
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface UsersRepository extends JpaRepository<Users, Long> { // Certifique-se de que Users é a entidade correta
+public interface UsersRepository extends JpaRepository<Users, Long> {
+    Optional<Users> findByEmail(String email);
 }
