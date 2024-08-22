@@ -1,6 +1,7 @@
 package com.ticketflow.menager.Controller;
 
 import com.ticketflow.menager.Dto.UsersDTO;
+import com.ticketflow.menager.Entity.Users;
 import com.ticketflow.menager.Service.UsersService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class UsersController {
 
     // Endpoint para buscar usuário por ID
     @GetMapping("/{id}")
-    public ResponseEntity<UsersDTO> getUserById(@PathVariable Long id) {
-        UsersDTO user = usersService.getUserById(id);
+    public ResponseEntity<Users> getUserById(@PathVariable Long id) {
+        Users user = usersService.getUserById(id);
         return ResponseEntity.ok(user);
     }
 

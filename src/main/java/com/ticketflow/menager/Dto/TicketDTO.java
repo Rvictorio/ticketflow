@@ -5,12 +5,13 @@ import com.ticketflow.menager.enums.Status;
 
 import java.time.LocalDateTime;
 
-public record TicketDTO(Long id,
-                        String title,
-                        String description,
-                        Status status,
-                        Priority priority,
-                        Long creatorId,
-                        LocalDateTime createdAt,
-                        LocalDateTime updatedAt) {
-}
+public record TicketDTO(
+        Long id,
+        String title,
+        String description,
+        Status status,
+        Priority priority,
+        String creatorEmail,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
+) {}

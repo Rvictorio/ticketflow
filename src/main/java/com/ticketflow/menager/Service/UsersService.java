@@ -14,32 +14,16 @@ import java.util.stream.Collectors;
 public class UsersService {
 
     @Autowired
-    private UsersRepository usersRepository; // Injeção do repositório
+    private UsersRepository usersRepository;
 
-    public UsersDTO getUserById(Long id) {
-        Optional<Users> userOptional = usersRepository.findById(id);
-        Users user = userOptional.orElseThrow(() -> new RuntimeException("User not found"));
-
-        return new UsersDTO(
-                user.getId(),
-                user.getName(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getRole()
-        );
+    public Users getUserById(Long id) {
+        return usersRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-    public UsersDTO getUserByEmail(String email) {
-        Users user = usersRepository.findByEmail(email)
+    public Users getUserByEmail(String email) {
+        return usersRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
-
-        return new UsersDTO(
-                user.getId(),
-                user.getName(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getRole()
-        );
     }
 
     public UsersDTO updateUser(Long id, UsersDTO userDTO) {
@@ -62,7 +46,6 @@ public class UsersService {
         );
     }
 
-
     public void deleteUser(Long id) {
         Users user = usersRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -78,9 +61,7 @@ public class UsersService {
                 userDTO.role()
         );
 
-
         Users savedUser = usersRepository.save(user);
-
 
         return new UsersDTO(
                 savedUser.getId(),
@@ -90,7 +71,6 @@ public class UsersService {
                 savedUser.getRole()
         );
     }
-
 
     public List<UsersDTO> getAllUsers() {
         List<Users> usersList = usersRepository.findAll();
@@ -105,5 +85,4 @@ public class UsersService {
                 ))
                 .collect(Collectors.toList());
     }
-
 }
