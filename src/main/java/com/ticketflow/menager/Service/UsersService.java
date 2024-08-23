@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,17 +17,17 @@ public class UsersService {
 
     public Users getUserById(Long id) {
         return usersRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
     }
 
     public Users getUserByEmail(String email) {
         return usersRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado pelo e-mail: " + email));
     }
 
     public UsersDTO updateUser(Long id, UsersDTO userDTO) {
         Users user = usersRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
 
         user.setName(userDTO.name());
         user.setEmail(userDTO.email());
@@ -48,7 +47,7 @@ public class UsersService {
 
     public void deleteUser(Long id) {
         Users user = usersRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
         usersRepository.delete(user);
     }
 

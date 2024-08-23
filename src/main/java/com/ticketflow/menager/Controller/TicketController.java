@@ -29,4 +29,22 @@ public class TicketController {
         List<Ticket> tickets = ticketService.getTicketsByCreatorEmail(email);
         return ResponseEntity.ok(tickets);
     }
+
+    @GetMapping
+    public ResponseEntity<List<TicketDTO>> getAllTickets() {
+        List<TicketDTO> tickets = ticketService.getAllTickets();
+        return ResponseEntity.ok(tickets);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTicket(@PathVariable Long id) {
+        ticketService.deleteTicket(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TicketDTO> updatedTicket(@PathVariable Long id, @RequestBody TicketDTO ticketDTO) {
+        TicketDTO updatedTicket = ticketService.updateTicket(id, ticketDTO);
+        return ResponseEntity.ok(updatedTicket);
+    }
 }

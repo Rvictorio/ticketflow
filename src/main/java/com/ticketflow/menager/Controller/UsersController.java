@@ -18,21 +18,21 @@ public class UsersController {
         this.usersService = usersService;
     }
 
-    // Endpoint para buscar usuário por ID
+
     @GetMapping("/{id}")
     public ResponseEntity<Users> getUserById(@PathVariable Long id) {
         Users user = usersService.getUserById(id);
         return ResponseEntity.ok(user);
     }
 
-    // Endpoint para listar todos os usuários
+
     @GetMapping
     public ResponseEntity<List<UsersDTO>> getAllUsers() {
         List<UsersDTO> users = usersService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
-    // Endpoint para criar um novo usuário
+
     @PostMapping
     public ResponseEntity<UsersDTO> createUser(@RequestBody UsersDTO userDTO) {
         UsersDTO newUser = usersService.createUser(userDTO);
@@ -40,14 +40,14 @@ public class UsersController {
     }
 
 
-    // Endpoint para atualizar um usuário existente
+
     @PutMapping("/{id}")
     public ResponseEntity<UsersDTO> updateUser(@PathVariable Long id, @RequestBody UsersDTO userDTO) {
         UsersDTO updatedUser = usersService.updateUser(id, userDTO);
         return ResponseEntity.ok(updatedUser);
     }
 
-    // Endpoint para deletar um usuário
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         usersService.deleteUser(id);
