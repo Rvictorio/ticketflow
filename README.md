@@ -46,6 +46,7 @@ https://github.com/Rvictorio/ticketflow
 - **POST /tickets**: Criar um novo ticket.
 - **GET /tickets**: Visualizar todos os tickets.
 - **GET /tickets/{id}**: Visualizar um ticket específico.
+- **GET /tickets/creator/{email}**: Visualizar tickets atrelados a um email.
 - **PUT /tickets/{id}**: Atualizar um ticket existente.
 - **DELETE /tickets/{id}**: Excluir um ticket.
 

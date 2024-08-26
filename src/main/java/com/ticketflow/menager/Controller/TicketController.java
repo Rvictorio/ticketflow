@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ticket")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TicketController {
 
     private final TicketService ticketService;
