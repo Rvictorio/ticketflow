@@ -23,6 +23,7 @@ public class TicketService {
     public TicketDTO createTicket(TicketDTO ticketDTO) {
 
 
+
         Users creator = userService.getUserByEmail(ticketDTO.creatorEmail());
 
         Ticket ticket = new Ticket(
@@ -107,5 +108,20 @@ public class TicketService {
         );
     }
 
+    public TicketDTO getTicketById(Long id) {
+        Ticket ticket = ticketRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ticket não encontrado!"));
+
+        return new TicketDTO(
+                ticket.getId(),
+                ticket.getTitle(),
+                ticket.getDescription(),
+                ticket.getStatus(),
+                ticket.getPriority(),
+                ticket.getCreator().getEmail(),
+                ticket.getCreatedAt(),
+                ticket.getUpdatedAt()
+        );
+    }
 
 }
